@@ -6,7 +6,7 @@ public class main {
 
     public static void main(String[] args) {
         
-        Grafo g = new Grafo(9);
-        
+        Grafo g = new Grafo(3);
+        Kruskal.Kruskal(g);
     }
 }
