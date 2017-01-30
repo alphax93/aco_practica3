@@ -6,7 +6,7 @@ public class Conjunto {
 
     public static void inicializa(int[] conjunto, int size){
         for (int i = 0; i < size; i++) {
-            conjunto[i]=0;
+            conjunto[i]=-1;
             
         }
     }

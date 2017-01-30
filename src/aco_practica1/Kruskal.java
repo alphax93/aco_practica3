@@ -8,7 +8,10 @@ import java.util.List;
 
 public class Kruskal {
     
-    public static List Kruskal(Grafo g){
+    public static List Kruskal(Grafo g, Arista[] a){
+        
+        
+        OrdenaAristas.ordena(a);
         
         int n = g.getnV();
         List<Arista> t = new LinkedList<>();
