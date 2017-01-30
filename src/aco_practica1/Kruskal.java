@@ -8,7 +8,7 @@ public class Kruskal {
     public static Conjunto Kruskal(Grafo g){
         
         int n = g.getnV();
-        Conjunto T = new Conjunto(n);
+        Conjunto T = new Conjunto(n-1);
         
     }
     
