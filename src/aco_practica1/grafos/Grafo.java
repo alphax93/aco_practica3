@@ -48,6 +48,14 @@ public class Grafo {
     public int getnV() {
         return nV;
     }
+
+    public boolean[][] getmA() {
+        return mA;
+    }
+
+    public int[][] getCost() {
+        return cost;
+    }
     
     
 }
