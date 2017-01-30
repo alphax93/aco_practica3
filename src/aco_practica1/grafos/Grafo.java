@@ -26,8 +26,7 @@ public class Grafo {
         mA[i][j]=true;
         mA[j][i]=true;
         cost[i][j]=value;
-        cost[j][i]=value;
-        
+        cost[j][i]=value;  
     }
     
     public void disconnect(int i, int j){

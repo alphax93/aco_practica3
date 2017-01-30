@@ -8,8 +8,5 @@ public class main {
         
         Grafo g = new Grafo(9);
         
-        
-        
     }
-    
 }
