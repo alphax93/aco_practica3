@@ -11,5 +11,5 @@ public class Kruskal {
         Conjunto T = new Conjunto(n-1);
         
     }*/
-    
+
 }
