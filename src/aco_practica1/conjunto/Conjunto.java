@@ -11,15 +11,15 @@ public class Conjunto {
         }
     }
     
-    public int buscar(int[] conjunto, int size, int x){
+    public static int buscar(int[] conjunto, int size, int x){
         int i = x;
-        while(conjunto[i]>0){
+        while(conjunto[i]>-1){
             i=conjunto[i];
         }
         return i;
     }
 
-    public void fusionar(int[] conjunto, int size, int a, int b){
+    public static void fusionar(int[] conjunto, int size, int a, int b){
         if(conjunto[a]==conjunto[b]){
             conjunto[a]=conjunto[a]-1;
             conjunto[b]=a;
