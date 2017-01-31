@@ -11,7 +11,7 @@ public class Kruskal {
     public static List Kruskal(Grafo g, Arista[] a){
         
         
-        OrdenaAristas.ordena(a);
+        OrdenaAristas.ordena(a,0,a.length);
         
         int n = g.getnV();
         List<Arista> t = new LinkedList<>();

@@ -13,11 +13,29 @@ public class main {
         g.connect(2, 0, 1);
         g.connect(0, 3, 1);
         g.connect(3, 2, 2);
-
         
+        System.out.println(g.isConnected(0,1));
+        System.out.println(g.isConnected(2,1));
+        System.out.println(g.isConnected(0,2));
+        System.out.println(g.isConnected(0,3));
+        System.out.println(g.isConnected(3,2));
+        
+        g.disconnect(1,2);
+        
+        System.out.println(g.isConnected(1,2));
         
         Arista[] a = g.aristas();
         
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i].getInicio() +" "+ a[i].getFin() + " " + a[i].getPeso());
+        }
+        
+        OrdenaAristas.ordena(a,0,a.length);
+        
+        System.out.println("-----------------------");
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i].getInicio() +" "+ a[i].getFin() + " " + a[i].getPeso());
+        }
         //Kruskal.Kruskal(g,a);
     }
 }

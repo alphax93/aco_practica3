@@ -8,9 +8,7 @@ public class Grafo {
     private int nV;
     private Vertice[] vertices;
     
-    /*private boolean mA[][];
-    private int cost[][];
-    */
+    
     public Grafo(int n){
         nV = n;
         vertices = new Vertice[n];
@@ -18,53 +16,48 @@ public class Grafo {
             vertices[i]= new Vertice(i);
             
         }
-       /* mA = new boolean[n][n];
-        for (int i = 0; i < mA.length; i++) {
-            for (int j = 0; j < mA.length; j++) {
-                mA[i][j]=false;
-            }
-        }
-        cost = new int[n][n];
-        for (int i = 0; i < cost.length; i++) {
-            for (int j = 0; j < cost.length; j++) {
-                cost[i][j]=0;
-            }
-        }*/
+       
     }
     
     public void connect(int i, int j, int value){
         
-        if(i>j){
-            int temp = i;
-            i = j;
-            j = temp;
-        }
-        Arista aux = vertices[i].getArista();
-        if(aux==null){
-            
-            vertices[i].setArista(new Arista(i,j,value));
-        } else {
-            
-            while(aux.hasNext()){
-                aux=aux.getNext();
+        if(!isConnected(i,j)){
+            if(i>j){
+                int temp = i;
+                i = j;
+                j = temp;
             }
-            
-            aux.setNext(new Arista(i,j,value));
-            
+            Arista aux = vertices[i].getArista();
+            if(aux==null){
+                vertices[i].setArista(new Arista(i,j,value));
+            } else {
+                
+                vertices[i].setArista(new Arista(i,j,value));
+                vertices[i].getArista().setNext(aux);
+
+            }
         }
-        /*mA[i][j]=true;
-        mA[j][i]=true;
-        cost[i][j]=value;
-        cost[j][i]=value;*/  
     }
     
     public void disconnect(int i, int j){
         
-        
-        /*mA[i][j]=false;
-        mA[j][i]=false;
-        cost[i][j]=0;
-        cost[j][i]=0;*/
+        if(isConnected(i,j)){
+            if(i>j){
+                int temp = i;
+                i = j;
+                j = temp;
+            }
+            Arista aux= vertices[i].getArista();
+            Arista next = aux.getNext();
+            if(aux.getInicio()==i&&aux.getFin()==j){
+                vertices[i].setArista(next);
+            }
+            while(aux.hasNext()){
+                if(next.getInicio()==i&&next.getFin()==j){
+                    aux.setNext(next.getNext());
+                }
+            }
+        }        
     }
 
     public boolean isConnected(int i, int j){
@@ -75,7 +68,7 @@ public class Grafo {
         }
         
         Arista aux = vertices[i].getArista();
-        
+        if(aux==null) return false;
         while(aux.hasNext()){
             
             if(aux.getInicio()==i&&aux.getFin()==j){
@@ -94,19 +87,6 @@ public class Grafo {
         return false;
     }
     
-    /*public int getCost(int i, int j){
-        return cost[i][j];
-    }
-    
-    
-
-    public boolean[][] getmA() {
-        return mA;
-    }
-
-    public int[][] getCost() {
-        return cost;
-    }*/
     public int getnV() {
         return nV;
     }
