@@ -2,6 +2,7 @@ package aco_practica1;
 
 import aco_practica1.grafos.Arista;
 import aco_practica1.grafos.Grafo;
+import java.util.List;
 
 public class main {
 
@@ -19,10 +20,7 @@ public class main {
         System.out.println(g.isConnected(0,2));
         System.out.println(g.isConnected(0,3));
         System.out.println(g.isConnected(3,2));
-        
-        g.disconnect(1,2);
-        
-        System.out.println(g.isConnected(1,2));
+       
         
         Arista[] a = g.aristas();
         
@@ -36,6 +34,11 @@ public class main {
         for (int i = 0; i < a.length; i++) {
             System.out.println(a[i].getInicio() +" "+ a[i].getFin() + " " + a[i].getPeso());
         }
-        //Kruskal.Kruskal(g,a);
+        List<Arista> result=Kruskal.Kruskal(g,a);
+        
+        System.out.println("-----------------------");
+        for (Arista arista : result) {
+            System.out.println(arista.getInicio() + " " + arista.getFin());
+        }
     }
 }

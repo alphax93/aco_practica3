@@ -9,7 +9,7 @@ public class OrdenaAristas {
             int n1 = n/2;
             int n2= n - n1;
             ordena(a,ini,n1);
-            ordena(a,n1+1, n2);
+            ordena(a,ini+n1, n2);
             merge(a, ini, n1,n2);
         }
     }
