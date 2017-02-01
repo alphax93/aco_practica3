@@ -7,10 +7,12 @@ public class Grafo {
     
     private int nV;
     private Vertice[] vertices;
+    private int aristas;
     
     
     public Grafo(int n){
         nV = n;
+        aristas=0;
         vertices = new Vertice[n];
         for (int i = 0; i < vertices.length; i++) {
             vertices[i]= new Vertice(i);
@@ -36,6 +38,7 @@ public class Grafo {
                 vertices[i].getArista().setNext(aux);
 
             }
+            aristas++;
         }
     }
     
@@ -51,13 +54,24 @@ public class Grafo {
             Arista next = aux.getNext();
             if(aux.getInicio()==i&&aux.getFin()==j){
                 vertices[i].setArista(next);
+                aristas--;
+                return;
             }
             while(aux.hasNext()){
                 if(next.getInicio()==i&&next.getFin()==j){
                     aux.setNext(next.getNext());
+                    aristas--;
+                    return;
                 }
+                aux=next;
+                next=next.getNext();
             }
+            
         }        
+    }
+
+    public int getAristas() {
+        return aristas;
     }
 
     public boolean isConnected(int i, int j){
@@ -92,19 +106,25 @@ public class Grafo {
     }
 
     public Arista[] aristas() {
-        List<Arista> list = new ArrayList<>();
+        //List<Arista> list = new ArrayList<>();
+        Arista[] result = new Arista[aristas];
+        int j = 0;
         for (int i = 0; i < vertices.length; i++) {
             Arista aux = vertices[i].getArista();
             if(aux!=null){
-                list.add(aux);
+                //list.add(aux);
+                result[j]=aux;
+                j++;
                 while(aux.hasNext()){
                     aux=aux.getNext();
-                    list.add(aux);
+                    //list.add(aux);
+                    result[j]=aux;
+                    j++;
                 }
             }
             
         }
-        return list.toArray(new Arista[0]);
+        return result;//list.toArray(new Arista[0]);
     }
     
 }

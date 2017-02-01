@@ -8,32 +8,23 @@ public class main {
 
     public static void main(String[] args) {
         
-        Grafo g = new Grafo(4);
-        g.connect(0, 1, 3);
-        g.connect(1, 2, 4);
-        g.connect(2, 0, 1);
-        g.connect(0, 3, 1);
-        g.connect(3, 2, 2);
-        
-        System.out.println(g.isConnected(0,1));
-        System.out.println(g.isConnected(2,1));
-        System.out.println(g.isConnected(0,2));
-        System.out.println(g.isConnected(0,3));
-        System.out.println(g.isConnected(3,2));
-       
+        Grafo g = new Grafo(7);
+        g.connect(0, 1, 1);
+        g.connect(1, 2, 2);
+        g.connect(3, 4, 4);
+        g.connect(4, 5, 8);
+        g.connect(2, 6, 4);
+        g.connect(0, 3, 4);
+        g.connect(1, 4, 4);
+        g.connect(4, 6, 7);
+        g.connect(2, 5, 6);
+        g.connect(0, 4, 6);
+        g.connect(2, 4, 4);
+        g.connect(3, 6, 4);
+        g.connect(5, 6, 3);
         
         Arista[] a = g.aristas();
         
-        for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i].getInicio() +" "+ a[i].getFin() + " " + a[i].getPeso());
-        }
-        
-        OrdenaAristas.ordena(a,0,a.length);
-        
-        System.out.println("-----------------------");
-        for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i].getInicio() +" "+ a[i].getFin() + " " + a[i].getPeso());
-        }
         List<Arista> result=Kruskal.Kruskal(g,a);
         
         System.out.println("-----------------------");

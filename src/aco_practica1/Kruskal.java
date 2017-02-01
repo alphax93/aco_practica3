@@ -20,7 +20,7 @@ public class Kruskal {
         int[] conjunto = new int[n];
         Conjunto.inicializa(conjunto,n);
      
-        while(t.size()<n-1){
+        while(t.size()<n-1 && !aristas.isEmpty()){
             Arista uv = aristas.get(0);
             aristas.remove(0);
             
