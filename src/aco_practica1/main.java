@@ -23,9 +23,11 @@ public class main {
         g.connect(3, 6, 4);
         g.connect(5, 6, 3);
         
-        Arista[] a = g.aristas();
+        Pruebas.conexo(g,g.aristas());
+               
+        List<Arista> result=Kruskal.Kruskal(g);
         
-        List<Arista> result=Kruskal.Kruskal(g,a);
+        Pruebas.conexo(g,result.toArray(new Arista[0]));
         
         System.out.println("-----------------------");
         for (Arista arista : result) {

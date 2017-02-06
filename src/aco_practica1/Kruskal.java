@@ -9,9 +9,9 @@ import java.util.List;
 
 public class Kruskal {
     
-    public static List Kruskal(Grafo g, Arista[] a){
+    public static List Kruskal(Grafo g){
         
-        
+        Arista[] a = g.aristas();
         OrdenaAristas.ordena(a,0,a.length);
         List<Arista> aristas = new ArrayList<Arista>(Arrays.asList(a));
         
