@@ -2,24 +2,25 @@ package aco_practica1.grafos;
 
 public class Arista {
     
-    int inicio;
-    int fin;
+    
     int peso;
     Arista next;
+    Vertice inicio;
+    Vertice fin;
 
-    public Arista(int inicio, int fin, int peso) {
-        this.inicio = inicio;
-        this.fin = fin;
+    public Arista(int peso, Vertice i, Vertice j) {
+        this.inicio = i;
+        this.fin = j;
         this.peso = peso;
         next=null;
     }
 
     public int getInicio() {
-        return inicio;
+        return inicio.getNum();
     }
 
     public int getFin() {
-        return fin;
+        return fin.getNum();
     }
 
     public int getPeso() {

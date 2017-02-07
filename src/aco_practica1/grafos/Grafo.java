@@ -35,10 +35,10 @@ public class Grafo {
             }
             Arista aux = vertices[i].getArista();
             if(aux==null){
-                vertices[i].setArista(new Arista(i,j,value));
+                vertices[i].setArista(new Arista(value,vertices[i],vertices[j]));
             } else {
                 
-                vertices[i].setArista(new Arista(i,j,value));
+                vertices[i].setArista(new Arista(value,vertices[i],vertices[j]));
                 vertices[i].getArista().setNext(aux);
 
             }

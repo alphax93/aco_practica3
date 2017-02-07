@@ -13,7 +13,7 @@ public class Pruebas {
             con[i]=false;
             
         }
-        for (int i = 0; i < con.length; i++) {
+        for (int i = 0; i < aristas.length; i++) {
             con[aristas[i].getInicio()]=true;
             con[aristas[i].getFin()]=true;
         }
@@ -26,7 +26,7 @@ public class Pruebas {
     }
     
     public static boolean tamano(int n, List<Arista> list){
-        if(n!=list.size()) return false;
+        if(n-1!=list.size()) return false;
         return true;
     }
     
@@ -43,8 +43,8 @@ public class Pruebas {
     private static boolean hayCiclos(Grafo g, Arista[] aristas,int[] visitados, int origen){
         visitados[origen]=1;
         boolean atras= false;
-        Arista l = g.getVertices()[origen].getArista(); 
-        
+        Arista l = 
+        return false;
     }
     
 }

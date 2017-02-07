@@ -16,6 +16,10 @@ public class Vertice {
         return arista;
     }
 
+    public int getNum() {
+        return num;
+    }
+
     public void setArista(Arista arista) {
         this.arista = arista;
     }
