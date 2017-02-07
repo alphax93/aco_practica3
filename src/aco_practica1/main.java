@@ -8,42 +8,34 @@ public class main {
 
     public static void main(String[] args) {
         
-        Grafo g = new Grafo(7);
-        g.connect(0, 2, 1);
-        g.connect(1, 2, 2);
-        g.connect(3, 4, 4);
-        g.connect(4, 5, 8);
-        g.connect(2, 6, 1);
-        g.connect(0, 3, 1);
-        g.connect(1, 4, 1);
-        g.connect(4, 6, 1);
-        g.connect(2, 5, 6);
-        g.connect(0, 4, 6);
-        g.connect(2, 4, 4);
-        g.connect(3, 6, 1);
-        g.connect(5, 6, 1);
+        //Creacion del grafo inicial, modificar el número cuando sea necesario
+        Grafo original = new Grafo(3);
+        generaOriginal(original);
         
-        /*Grafo s=new Grafo(3);
-        s.connect(0, 1, 1);
-        s.connect(0, 2, 1);
-        s.connect(2, 1, 1);
-        */
+        //Pruebas del original
+        Pruebas.pruebas(original, null);
         
-        System.out.println(Pruebas.conexo(g,g.aristas()));
+        //Obtencion de las aristas correctas y creación del nuevo grafo 
+        List<Arista> result=Kruskal.Kruskal(original);
+        Grafo kruskal = new Grafo(original.getnV());
+        generaKruskal(kruskal,result);
         
-        //List<Arista> result1=Kruskal.Kruskal(s);
-        List<Arista> result=Kruskal.Kruskal(g);
+        //Pruebas de kruskal
+        Pruebas.pruebas(original, kruskal);
         
-       
-        System.out.println(Pruebas.conexo(g,result.toArray(new Arista[0])));
-        System.out.println(Pruebas.tamano(g.getnV(),result));
-        
-        /*System.out.println(Pruebas.conexo(s,result1.toArray(new Arista[0])));
-        System.out.println(Pruebas.tamano(s.getnV(),result1));*/
-        
-        System.out.println("-----------------------");
-        for (Arista arista : result) {
-            System.out.println(arista.getInicio() + " " + arista.getFin());
+    }
+    //Usar este metodo para las conectar los vertices del grafo original 
+    private static void generaOriginal(Grafo original){
+        original.connect(0,1,1);
+        original.connect(0,2,1);
+        original.connect(1,2,1);
+    }
+    
+    //Usar este método para crear el nuevo grafo que usa solo las aristas obtenidas en Kruskal
+    private static void generaKruskal(Grafo g, List<Arista> list){
+        for (Arista arista : list) {
+            g.connect(arista.getInicio(),arista.getFin(),arista.getPeso());
         }
     }
+            
 }
