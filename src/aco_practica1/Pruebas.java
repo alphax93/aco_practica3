@@ -30,4 +30,21 @@ public class Pruebas {
         return true;
     }
     
+    public static boolean ciclo(Grafo g, Arista[] aristas ){
+        int[] visitados = new int[g.getnV()];
+        boolean hay = false;
+        for (int i = 0; i < visitados.length && !hay; i++) {
+            if(visitados[i]==0)hay=hayCiclos(g,aristas,visitados,i);
+            
+        }
+        return hay;
+    }
+    
+    private static boolean hayCiclos(Grafo g, Arista[] aristas,int[] visitados, int origen){
+        visitados[origen]=1;
+        boolean atras= false;
+        Arista l = g.getVertices()[origen].getArista(); 
+        
+    }
+    
 }

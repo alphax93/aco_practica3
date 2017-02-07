@@ -8,6 +8,10 @@ public class Grafo {
     private int nV;
     private Vertice[] vertices;
     private int aristas;
+
+    public Vertice[] getVertices() {
+        return vertices;
+    }
     
     
     public Grafo(int n){
