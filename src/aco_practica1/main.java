@@ -9,7 +9,7 @@ public class main {
     public static void main(String[] args) {
         
         //Creacion del grafo inicial, modificar el número cuando sea necesario
-        Grafo original = new Grafo(3);
+        Grafo original = new Grafo(7);
         generaOriginal(original);
         
         //Pruebas del original
@@ -20,16 +20,30 @@ public class main {
         Grafo kruskal = new Grafo(original.getnV());
         generaKruskal(kruskal,result);
         
+        for (Arista arista : result) {
+            System.out.println(arista.getInicio() + " " + arista.getFin());
+        }
+        
         //Pruebas de kruskal
         Pruebas.pruebas(original, kruskal);
         
     }
     //Usar este metodo para las conectar los vertices del grafo original 
     private static void generaOriginal(Grafo original){
-        original.connect(0,1,1);
-        original.connect(0,2,1);
-        original.connect(1,2,1);
-    }
+            original.connect(0, 1, 1);
+            original.connect(1, 2, 2);
+            original.connect(3, 4, 4);
+            original.connect(4, 5, 8);
+            original.connect(2, 6, 4);
+            original.connect(0, 3, 4);
+            original.connect(1, 4, 4);
+            original.connect(4, 6, 7);
+            original.connect(2, 5, 6);
+            original.connect(0, 4, 6);
+            original.connect(2, 4, 4);
+            original.connect(3, 6, 4);
+            original.connect(5, 6, 3);
+   }
     
     //Usar este método para crear el nuevo grafo que usa solo las aristas obtenidas en Kruskal
     private static void generaKruskal(Grafo g, List<Arista> list){

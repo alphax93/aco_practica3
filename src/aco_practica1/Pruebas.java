@@ -3,6 +3,8 @@ package aco_practica1;
 import aco_practica1.grafos.Arista;
 import aco_practica1.grafos.Grafo;
 import aco_practica1.grafos.Vertice;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Pruebas {
@@ -59,19 +61,34 @@ public class Pruebas {
     
     private static boolean hayCiclos(Grafo g,int v,boolean[] visitados, int parent){
         visitados[v]=true;
-        Arista i;
-        if(g.getVertices()[v].getArista()!=null){
-            i = g.getVertices()[v].getArista();
-        }else {
-            return false;
+        int i ;
+        List<Integer> lista = new ArrayList<>();
+        
+        for (int j = 0; j < visitados.length; j++) {
+            Arista p;
+            if(g.getVertices()[j].getArista()!=null){
+                p=g.getVertices()[j].getArista();
+            }else {
+                return false;
+            }
+            while(p.hasNext()){
+                if(p.getInicio() == j && lista.contains(p.getFin())){
+                    lista.add(p.getFin());
+                }else if(p.getFin() == j && lista.contains(p.getInicio())){
+                    lista.add(p.getInicio());
+                }
+                p=p.getNext();
+            }
+
         }
-        while(i.hasNext()){
-            i=i.getNext();
-            if(!visitados[i.getInicio()]){
-                if(hayCiclos(g,i.getInicio(),visitados,v)){
+        Iterator <Integer> it = lista.iterator();
+        while(it.hasNext()){
+            i=it.next();
+            if(!visitados[i]){
+                if(hayCiclos(g,i,visitados,v)){
                     return true;
                 }
-            } else if(i.getInicio()!=parent){
+            } else if(i!=parent){
                 return true;
             }
         }
