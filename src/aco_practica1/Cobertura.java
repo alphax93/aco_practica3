@@ -16,7 +16,9 @@ public class Cobertura {
         List<Vertice> s = new ArrayList<>();
      
         while(!e.isEmpty()){
-            Arista uv = e.get(0);
+            int r = (int)(Math.random() * (e.size()-1));
+            
+            Arista uv = e.get(r);
             List<Arista> ep = new ArrayList<>();
             for (Arista arista : e) {
                 if(arista.getInicio()==uv.getInicio() || arista.getFin()==uv.getInicio()
@@ -26,7 +28,7 @@ public class Cobertura {
             }
             s.add(uv.getInicio());
             s.add(uv.getFin());
-            
+            e.removeAll(ep);
             
             
         }
