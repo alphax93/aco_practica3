@@ -16,7 +16,7 @@ public class main {
         Pruebas.pruebas(original, null);
         
         //Obtencion de las aristas correctas y creación del nuevo grafo 
-        List<Arista> result=Kruskal.Kruskal(original);
+        List<Arista> result=Cobertura.Kruskal(original);
         Grafo kruskal = new Grafo(original.getnV());
         generaKruskal(kruskal,result);
         

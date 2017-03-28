@@ -56,13 +56,13 @@ public class Grafo {
             }
             Arista aux= vertices[i].getArista();
             Arista next = aux.getNext();
-            if(aux.getInicio()==i&&aux.getFin()==j){
+            if(aux.getInicio().getNum()==i&&aux.getFin().getNum()==j){
                 vertices[i].setArista(next);
                 aristas--;
                 return;
             }
             while(aux.hasNext()){
-                if(next.getInicio()==i&&next.getFin()==j){
+                if(next.getInicio().getNum()==i&&next.getFin().getNum()==j){
                     aux.setNext(next.getNext());
                     aristas--;
                     return;
@@ -89,14 +89,14 @@ public class Grafo {
         if(aux==null) return false;
         while(aux.hasNext()){
             
-            if(aux.getInicio()==i&&aux.getFin()==j){
+            if(aux.getInicio().getNum()==i&&aux.getFin().getNum()==j){
                 return true;
                 
             }
             aux=aux.getNext();
         }
         if(aux.getNext()==null){
-            if(aux.getInicio()==i&&aux.getFin()==j){
+            if(aux.getInicio().getNum()==i&&aux.getFin().getNum()==j){
                 return true;
                 
             }
@@ -109,26 +109,25 @@ public class Grafo {
         return nV;
     }
 
-    public Arista[] aristas() {
-        //List<Arista> list = new ArrayList<>();
-        Arista[] result = new Arista[aristas];
+    public List<Arista> aristas() {
+        List<Arista> list = new ArrayList<>();
         int j = 0;
         for (int i = 0; i < vertices.length; i++) {
             Arista aux = vertices[i].getArista();
             if(aux!=null){
-                //list.add(aux);
-                result[j]=aux;
+                
+                list.add(aux);
                 j++;
                 while(aux.hasNext()){
                     aux=aux.getNext();
-                    //list.add(aux);
-                    result[j]=aux;
-                    j++;
+                   
+                    list.add(aux);
+                    
                 }
             }
             
         }
-        return result;//list.toArray(new Arista[0]);
+        return list;
     }
     
 }
