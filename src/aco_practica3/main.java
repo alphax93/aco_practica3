@@ -12,12 +12,15 @@ public class main {
         //Creacion del grafo inicial, modificar el número cuando sea necesario
         Grafo original = new Grafo(5);
         generaOriginal(original);
-        
-        List<Vertice> result = Cobertura.cobertura(original);
-        
-        for (Vertice vertice : result) {
-            System.out.println(vertice.getNum());
+        if(Pruebas.conexo(original)){
+            List<Vertice> result = Cobertura.cobertura(original);
+            for (Vertice vertice : result) {
+                System.out.println(vertice.getNum());
+            }
+        } else {
+            System.out.println("Grafo no conexo");
         }
+        
         
     }
     //Usar este metodo para las conectar los vertices del grafo original 
