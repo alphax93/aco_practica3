@@ -1,4 +1,4 @@
-package aco_practica1.grafos;
+package aco_practica3.grafos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class Grafo {
        
     }
     
-    public void connect(int i, int j, int value){
+    public void connect(int i, int j){
         
         if(!isConnected(i,j)){
             if(i>j){
@@ -35,10 +35,10 @@ public class Grafo {
             }
             Arista aux = vertices[i].getArista();
             if(aux==null){
-                vertices[i].setArista(new Arista(value,vertices[i],vertices[j]));
+                vertices[i].setArista(new Arista(vertices[i],vertices[j]));
             } else {
                 
-                vertices[i].setArista(new Arista(value,vertices[i],vertices[j]));
+                vertices[i].setArista(new Arista(vertices[i],vertices[j]));
                 vertices[i].getArista().setNext(aux);
 
             }
