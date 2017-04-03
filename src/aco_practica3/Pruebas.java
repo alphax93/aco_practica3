@@ -62,4 +62,9 @@ public class Pruebas {
         
         return false;
     }
+    
+    public static boolean cantidad(int minimo, int resultado){
+        if(resultado/2<=2*minimo) return true;
+        return false;
+    }
 }

@@ -20,6 +20,9 @@ public class main {
             if(!Pruebas.resultado(original,result)){
                 System.out.println("Resultado incorrecto");
             }
+            if(!Pruebas.cantidad(1, result.size())){
+                System.out.println("Cantidad de vértices del resultado incorrecta");
+            }
         } else {
             System.out.println("Grafo no conexo");
         }
