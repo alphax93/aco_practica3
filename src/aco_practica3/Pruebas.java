@@ -14,7 +14,6 @@ public class Pruebas {
     
     public static boolean conexo(Grafo g){
         
-       // List<Vertice> vertices = Arrays.asList(g.getVertices());
         List<Vertice> vertices = new ArrayList<>();
         vertices.add(g.getVertices()[0]);
         List<Vertice> visitados = new ArrayList<>();
@@ -36,6 +35,30 @@ public class Pruebas {
             
         }
         if(visitados.size()==g.getnV()) return true;
+        
+        return false;
+    }
+    
+    public static boolean resultado(Grafo g, List<Vertice> result){
+    
+        List<Arista> aristas = g.aristas();
+        List<Vertice> resto = new ArrayList<>();
+        for (Vertice vertice : result) {
+            for (Arista arista : aristas) {
+                if(arista.getInicio()==vertice){
+                    if(!resto.contains(arista.getFin()) && !result.contains(arista.getFin())){
+                        resto.add(arista.getFin());
+                    }
+                }
+                if(arista.getFin()==vertice){
+                    if(!resto.contains(arista.getInicio())&&!result.contains(arista.getInicio())){
+                        resto.add(arista.getInicio());
+                    }
+                }
+            }
+        }
+       
+        if(resto.size() == g.getnV()-result.size()) return true;
         
         return false;
     }
