@@ -10,7 +10,7 @@ public class main {
     public static void main(String[] args) {
         
         //Creacion del grafo inicial, modificar el número cuando sea necesario
-        Grafo original = new Grafo(5);
+        Grafo original = new Grafo(6);
         generaOriginal(original);
         if(Pruebas.conexo(original)){
             List<Vertice> result = Cobertura.cobertura(original);
@@ -20,7 +20,7 @@ public class main {
             if(!Pruebas.resultado(original,result)){
                 System.out.println("Resultado incorrecto");
             }
-            if(!Pruebas.cantidad(1, result.size())){
+            if(!Pruebas.cantidad(3, result.size())){
                 System.out.println("Cantidad de vértices del resultado incorrecta");
             }
         } else {
@@ -33,6 +33,7 @@ public class main {
     private static void generaOriginal(Grafo original){
             original.connect(0,1);
             original.connect(0,4);
+            original.connect(0,5);
             original.connect(1,2);
             original.connect(1,3);
             original.connect(1,4);

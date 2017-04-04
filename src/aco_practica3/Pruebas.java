@@ -42,8 +42,8 @@ public class Pruebas {
     public static boolean resultado(Grafo g, List<Vertice> result){
     
         List<Arista> aristas = g.aristas();
-        List<Vertice> resto = new ArrayList<>();
-        for (Vertice vertice : result) {
+        
+        /*for (Vertice vertice : result) {
             for (Arista arista : aristas) {
                 if(arista.getInicio()==vertice){
                     if(!resto.contains(arista.getFin()) && !result.contains(arista.getFin())){
@@ -58,13 +58,26 @@ public class Pruebas {
             }
         }
        
-        if(resto.size() == g.getnV()-result.size()) return true;
+        if(resto.size() == g.getnV()-result.size()) return true;*/
+        List<Arista> tmp = new ArrayList<>();
+        for (Vertice vertice : result) {
+            
+            for (Arista arista : aristas) {
+                
+                if(arista.getInicio()==vertice || arista.getFin()==vertice){
+                    if(!tmp.contains(arista)){
+                        tmp.add(arista);
+                    }
+                }
+            }
+        }
         
+        if(aristas.size()==tmp.size()) return true;
         return false;
     }
     
     public static boolean cantidad(int minimo, int resultado){
-        if(resultado/2<=2*minimo) return true;
+        if(resultado<=2*minimo) return true;
         return false;
     }
 }
